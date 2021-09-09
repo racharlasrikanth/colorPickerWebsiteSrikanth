@@ -209,6 +209,29 @@ arrow styles
 
 /*
 =============== 
+down arrow
+===============
+*/
+.bottom-arrow-container {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  transition: var(--transition);
+  animation: down-arrow-animation 1.5s linear infinite alternate;
+}
+@keyframes down-arrow-animation {
+  0% {
+    transform: translate(-50%, -50%) translateY(10px);
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(-10px);
+  }
+}
+
+/*
+=============== 
 Navbar
 ===============
 */
@@ -263,17 +286,26 @@ Navbar
   /* height: auto; */
 }
 .nav-links li a {
-  color: var(--clr-grey-1);
+  color: var(--clr-primary-3);
   display: block;
   padding: 0.425rem 0.325rem;
   letter-spacing: var(--spacing);
   font-weight: bold;
   transition: var(--transition);
+  text-decoration: underline;
+  text-decoration-color: var(--clr-primary-5);
+  font-family: var(--ff-primary);
 }
 .nav-links li a:hover {
   background: var(--clr-primary-5);
   padding-left: 0.845rem;
   color: var(--clr-white);
+}
+@media screen and (min-width: 768px) {
+  .navbar {
+    width: 95%;
+    max-width: 1170px;
+  }
 }
 
 /*

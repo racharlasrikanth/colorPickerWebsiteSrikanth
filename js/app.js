@@ -83,6 +83,9 @@ window.addEventListener("scroll", function (e) {
     navContainer.classList.remove("nav-container-change");
     getElement(".nav-logo").style.color = "white";
   }
+  scrollHeight <= 350
+    ? (getElement(".bottom-arrow-container").style.display = "block")
+    : (getElement(".bottom-arrow-container").style.display = "none");
 });
 
 // on click bars icon nav links showing
