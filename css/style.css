@@ -175,6 +175,109 @@ p {
 
 /*
 =============== 
+arrow styles
+===============
+*/
+.arrow-container {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  position: fixed;
+  z-index: 100;
+  width: 60px;
+  background: var(--clr-primary-4);
+  padding: 1rem;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  transform: scale(0.8);
+  cursor: pointer;
+  box-shadow: var(--light-shadow);
+  animation: arrowanimation 1.5s linear infinite alternate;
+  opacity: 0;
+}
+.arrow-container:hover {
+  box-shadow: var(--dark-shadow);
+}
+@keyframes arrowanimation {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+/*
+=============== 
+Navbar
+===============
+*/
+.nav-container {
+  width: 100%;
+  min-height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  background: transparent;
+  position: fixed;
+  transition: var(--transition);
+}
+.nav-container-change {
+  background: var(--clr-white);
+  box-shadow: var(--dark-shadow);
+}
+.navbar {
+  width: 90%;
+  min-height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 0.7rem;
+  transition: var(--transition);
+}
+.small-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-bars-icon {
+  width: 30px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.nav-logo {
+  color: var(--clr-white);
+  text-shadow: var(--dark-shadow);
+}
+.nav-links {
+  width: 100%;
+  overflow: hidden;
+  height: 0;
+  transition: var(--transition);
+}
+.nav-links-show {
+  margin-bottom: 1rem;
+  /* height: auto; */
+}
+.nav-links li a {
+  color: var(--clr-grey-1);
+  display: block;
+  padding: 0.425rem 0.325rem;
+  letter-spacing: var(--spacing);
+  font-weight: bold;
+  transition: var(--transition);
+}
+.nav-links li a:hover {
+  background: var(--clr-primary-5);
+  padding-left: 0.845rem;
+  color: var(--clr-white);
+}
+
+/*
+=============== 
 Hero
 ===============
 */
@@ -184,7 +287,7 @@ Hero
   justify-content: center;
   align-items: center;
   background: linear-gradient(rgba(44, 174, 186, 0.7), rgba(0, 0, 0, 0.6)),
-    url("../images/hero-img.jpg") center/cover no-repeat;
+    url("../images/hero-img.jpg") center/cover no-repeat fixed;
 }
 .hero {
   text-align: center;
@@ -243,6 +346,7 @@ red color center
   box-shadow: var(--light-shadow);
   transition: var(--transition);
   position: relative;
+  overflow: hidden;
 }
 .color-container:hover {
   transform: scale(1.02);
@@ -250,17 +354,20 @@ red color center
 }
 .color-code {
   /* opacity: 0; */
-  user-select: none;
+  /* user-select: none; */
   position: absolute;
-  top: 90%;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  /* top: 90%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
   font-weight: bold;
   letter-spacing: var(--spacing);
-  background: var(--clr-grey-9);
+  background: var(--clr-grey-7);
   padding: 0.225rem 0.325rem;
-  border-radius: var(--radius);
-  color: var(--clr-primary-5);
+  /* border-radius: var(--radius); */
+  /* color: var(--clr-primary-5); */
   cursor: text;
 }
 .color-copied {
@@ -278,6 +385,7 @@ red color center
   font-weight: bold;
   transition: var(--transition);
   border: 3px solid var(--clr-primary-8);
+  user-select: none;
 }
 .color-copied-show {
   transform: translate(-50%, -50%) scale(1.2) rotateZ(0deg);

@@ -4,63 +4,35 @@ import {
   blueColorShades,
   greenColorShades,
 } from "./colorsData.js";
+import { getElement, copyText, hideText, displayColors } from "./utils.js";
 
 // Elements
-const redContainer = document.querySelector(".red-container");
-const blueContainer = document.querySelector(".blue-container");
-const greenContainer = document.querySelector(".green-container");
+let scrollHeight = 0;
+const redContainer = getElement(".red-container");
+const blueContainer = getElement(".blue-container");
+const greenContainer = getElement(".green-container");
 const allColorsContainer = document.querySelectorAll(".main-color-center");
+const arrowContainer = getElement(".arrow-container");
+const navContainer = getElement(".nav-container");
+const navBarBars = getElement(".nav-bars-icon");
+const navLinks = getElement(".nav-links");
 
 // Functions
-// copy data function
-const copyText = function (text) {
-  let element = document.createElement("input");
-  element.value = text;
-  element.select();
-  navigator.clipboard.writeText(element.value);
-};
-
-// hide text after 1second
-const hideText = function (element) {
-  setTimeout(() => {
-    element.classList.remove("color-copied-show");
-  }, 1000);
-};
-
 const displayRedColors = function () {
   redColorShades.forEach((eachColor) => {
-    let html = `
-            <div style="background-color: ${eachColor.colorCode}" class="color-container">
-                <div class="color-code" title="Click to Copy!">${eachColor.colorCode}</div>
-                <div class="color-copied">copied!</div>
-            </div>
-        `;
-
-    redContainer.insertAdjacentHTML("beforeend", html);
+    displayColors(eachColor, redContainer);
   });
 };
 
 const displayBlueColors = function () {
   blueColorShades.forEach((eachColor) => {
-    let html = `
-        <div style="background-color: ${eachColor.colorCode}" class="color-container">
-            <div class="color-code" title="Click to Copy!">${eachColor.colorCode}</div>
-            <div class="color-copied">copied!</div>
-        </div>
-    `;
-    blueContainer.insertAdjacentHTML("beforeend", html);
+    displayColors(eachColor, blueContainer);
   });
 };
 
 const displayGreenColors = function () {
   greenColorShades.forEach((eachColor) => {
-    let html = `
-        <div style="background-color: ${eachColor.colorCode};" class="color-container">
-            <div class="color-code" title="Click to Copy!">${eachColor.colorCode}</div>
-            <div class="color-copied">copied!</div>
-        </div>
-    `;
-    greenContainer.insertAdjacentHTML("beforeend", html);
+    displayColors(eachColor, greenContainer);
   });
 };
 
@@ -98,4 +70,51 @@ allColorsContainer.forEach((eachColorContainer) => {
     // copying color code to clipboard
     copyText(newText);
   });
+});
+
+// While scrolling navbar color changing
+window.addEventListener("scroll", function (e) {
+  scrollHeight = window.scrollY;
+  arrowContainer.style.opacity = scrollHeight > 1000 ? 1 : 0;
+  if (scrollHeight >= 200) {
+    navContainer.classList.add("nav-container-change");
+    getElement(".nav-logo").style.color = "black";
+  } else {
+    navContainer.classList.remove("nav-container-change");
+    getElement(".nav-logo").style.color = "white";
+  }
+});
+
+// on click bars icon nav links showing
+navBarBars.addEventListener("click", function () {
+  navLinks.classList.toggle("nav-links-show");
+  navLinks.style.backgroundColor = "white";
+  if (navLinks.classList.contains("nav-links-show")) {
+    navBarBars.children[0].src = "./icons/cross.svg";
+    navLinks.style.height =
+      document.querySelectorAll(".link").length *
+        document.querySelector(".link").getBoundingClientRect().height +
+      "px";
+  } else {
+    navLinks.style.height = 0;
+    navBarBars.children[0].src = "./icons/bars.svg";
+  }
+
+  // when navbar is transparent & if we click on show links, navbar color will change
+  if (
+    scrollHeight < 200 &&
+    !navContainer.classList.contains("nav-container-change")
+  ) {
+    navContainer.classList.add("nav-container-change");
+    document.querySelector(".nav-logo").style.color = "black";
+  }
+});
+
+// on click nav link, nav links will close
+navLinks.addEventListener("click", function (e) {
+  if (e.target.classList.contains("link")) {
+    navLinks.style.height = 0;
+    navLinks.classList.remove("nav-links-show");
+    navBarBars.children[0].src = "./icons/bars.svg";
+  }
 });
