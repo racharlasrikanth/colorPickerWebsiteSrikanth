@@ -3,6 +3,10 @@ import {
   redColorShades,
   blueColorShades,
   greenColorShades,
+  yellowColorShades,
+  orangeColorShades,
+  blackColorShades,
+  purpleColorShades,
 } from "./colorsData.js";
 import { getElement, copyText, hideText, displayColors } from "./utils.js";
 
@@ -12,6 +16,10 @@ let firstTimeDownArrow = true;
 const redContainer = getElement(".red-container");
 const blueContainer = getElement(".blue-container");
 const greenContainer = getElement(".green-container");
+const yellowContainer = getElement(".yellow-container");
+const orangeContainer = getElement(".orange-container");
+const blackContainer = getElement(".black-container");
+const purpleContainer = getElement(".purple-container");
 const allColorsContainer = document.querySelectorAll(".main-color-center");
 const arrowContainer = getElement(".arrow-container");
 const navContainer = getElement(".nav-container");
@@ -38,10 +46,38 @@ const displayGreenColors = function () {
   });
 };
 
+const displayYellowColors = function () {
+  yellowColorShades.forEach((eachColor) => {
+    displayColors(eachColor, yellowContainer);
+  });
+};
+
+const displayOrangeColors = function () {
+  orangeColorShades.forEach((eachColor) => {
+    displayColors(eachColor, orangeContainer);
+  });
+};
+
+const displayBlackColors = function () {
+  blackColorShades.forEach((eachColor) => {
+    displayColors(eachColor, blackContainer);
+  });
+};
+
+const displayPurpleColors = function () {
+  purpleColorShades.forEach((eachColor) => {
+    displayColors(eachColor, purpleContainer);
+  });
+};
+
 const init = function () {
   displayRedColors();
   displayBlueColors();
   displayGreenColors();
+  displayYellowColors();
+  displayOrangeColors();
+  displayBlackColors();
+  displayPurpleColors();
 };
 init();
 

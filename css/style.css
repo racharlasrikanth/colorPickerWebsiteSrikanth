@@ -526,6 +526,42 @@ blue color center
 green color center
 ===============
 */
-.section-blue {
+.section-green {
+  background: var(--clr-white);
+}
+
+/*
+=============== 
+yeloow color center
+===============
+*/
+.section-yellow {
+  background: var(--clr-grey-10);
+}
+
+/*
+=============== 
+orange color center
+===============
+*/
+.section-orange {
+  background: var(--clr-white);
+}
+
+/*
+=============== 
+black color center
+===============
+*/
+.section-black {
+  background: var(--clr-grey-10);
+}
+
+/*
+=============== 
+purple color center
+===============
+*/
+.section-purple {
   background: var(--clr-white);
 }
