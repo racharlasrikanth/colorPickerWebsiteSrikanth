@@ -400,6 +400,16 @@ red color center
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  opacity: 0;
+  transform: scale(0.8) translateY(100px) rotateZ(0deg);
+  filter: blur(16px);
+  -webkit-filter: blur(16px);
+}
+.color-container-animation-show {
+  opacity: 1;
+  transform: scale(1) translateY(0px) rotateZ(0deg);
+  filter: blur(0px);
+  -webkit-filter: blur(0px);
 }
 .color-container:hover {
   transform: scale(1.02);

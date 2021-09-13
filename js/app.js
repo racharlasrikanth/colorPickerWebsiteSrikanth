@@ -17,6 +17,7 @@ const arrowContainer = getElement(".arrow-container");
 const navContainer = getElement(".nav-container");
 const navBarBars = getElement(".nav-bars-icon");
 const navLinks = getElement(".nav-links");
+const colorContainerTarget = document.querySelectorAll(".color-container");
 
 // Functions
 const displayRedColors = function () {
@@ -44,6 +45,25 @@ const init = function () {
 };
 init();
 
+const handleIntersectionMethod = function (entries) {
+  entries.map((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("color-container-animation-show");
+      observer.unobserve(entry.target);
+    } else {
+      entry.target.classList.remove("color-container-animation-show");
+    }
+  });
+};
+
+//
+// Observer
+//
+const observer = new IntersectionObserver(handleIntersectionMethod);
+document.querySelectorAll(".color-container").forEach((eachTarget) => {
+  observer.observe(eachTarget);
+});
+
 // Event Listners
 allColorsContainer.forEach((eachColorContainer) => {
   eachColorContainer.addEventListener("mousedown", function (event) {
@@ -52,19 +72,19 @@ allColorsContainer.forEach((eachColorContainer) => {
     let comingTarget = event.target;
 
     // conditions
-    if (comingClass === "color-container") {
+    if (comingClass.includes("color-container")) {
       comingTarget.children[1].classList.add("color-copied-show");
       newText = comingTarget.children[0].textContent;
       hideText(comingTarget.children[1]);
 
       //   hide the copied text on screen
-    } else if (comingClass === "color-code") {
+    } else if (comingClass.includes("color-code")) {
       comingTarget.parentElement.children[1].classList.add("color-copied-show");
       newText = comingTarget.textContent;
 
       //   hide the copied text on screen
       hideText(comingTarget.parentElement.children[1]);
-    } else if (comingClass === "color-copied") {
+    } else if (comingClass.includes("color-copied")) {
       newText = comingTarget.parentElement.children[0].textContent;
     }
 
