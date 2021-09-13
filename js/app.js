@@ -8,7 +8,13 @@ import {
   blackColorShades,
   purpleColorShades,
 } from "./colorsData.js";
-import { getElement, copyText, hideText, displayColors } from "./utils.js";
+import {
+  getElement,
+  copyText,
+  hideText,
+  displayColors,
+  displayOtherColorCode,
+} from "./utils.js";
 
 // Elements
 let scrollHeight = 0;
@@ -126,6 +132,10 @@ allColorsContainer.forEach((eachColorContainer) => {
 
     // copying color code to clipboard
     copyText(newText);
+
+    // displaying other codes
+    if (comingClass.includes("color-code"))
+      displayOtherColorCode(comingTarget.textContent, comingTarget);
   });
 });
 

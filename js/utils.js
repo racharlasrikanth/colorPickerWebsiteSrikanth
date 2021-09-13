@@ -1,3 +1,9 @@
+import {
+  hexToRGBconverter,
+  rgbToHslConverter,
+  hslToHexConverter,
+} from "./colorConverter.js";
+
 // element selection
 const getElement = (selection) => {
   const element = document.querySelector(selection);
@@ -26,11 +32,49 @@ const hideText = function (element) {
 const displayColors = function (colorObj, element) {
   let html = `
     <div style="background-color: ${colorObj.colorCode}" class="color-container">
-        <div style="color: ${colorObj.colorCode}" class="color-code" title="Click to Copy!">${colorObj.colorCode}</div>
+        <div class="color-code" title="Click to Convert Color Code!">${colorObj.colorCode}</div>
         <div class="color-copied">copied!</div>
     </div>
   `;
   element.insertAdjacentHTML("beforeend", html);
 };
 
-export { getElement, copyText, hideText, displayColors };
+// display rgb values/ hex values based on color
+const displayOtherColorCode = function (colorCode, comingTarget) {
+  if (colorCode.replace("#", "").length === 6) {
+    // converting hex to rgb
+
+    let rgbValue = hexToRGBconverter(colorCode);
+    comingTarget.textContent = rgbValue;
+    comingTarget.parentElement.style.backgroundColor = rgbValue;
+    comingTarget.style.textTransform = "lowercase";
+    //
+  } else if (colorCode.includes("rgb")) {
+    // converting rgb to hsl
+
+    let hslValue = rgbToHslConverter(
+      ...colorCode.replace("rgb(", "").replace(")", "").split(",")
+    );
+    comingTarget.textContent = hslValue;
+    comingTarget.parentElement.style.backgroundColor = hslValue;
+    comingTarget.style.textTransform = "lowercase";
+
+    //
+  } else if (colorCode.includes("hsl")) {
+    // converting hsl to hex
+
+    let hexValue = hslToHexConverter(
+      ...colorCode
+        .replaceAll("%", "")
+        .replace("hsl(", "")
+        .replace(")", "")
+        .replaceAll(", ", ",")
+        .split(",")
+    );
+    comingTarget.textContent = hexValue;
+    comingTarget.parentElement.style.backgroundColor = hexValue;
+    comingTarget.style.textTransform = "uppercase";
+  }
+};
+
+export { getElement, copyText, hideText, displayColors, displayOtherColorCode };

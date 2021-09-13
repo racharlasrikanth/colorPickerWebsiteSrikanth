@@ -427,12 +427,13 @@ red color center
   transform: translate(-50%, -50%); */
   font-weight: bold;
   letter-spacing: var(--spacing);
-  background: var(--clr-grey-7);
+  background: var(--clr-grey-1);
   padding: 0.225rem 0.325rem;
   /* border-radius: var(--radius); */
-  /* color: var(--clr-primary-5); */
+  color: var(--clr-grey-10);
   cursor: text;
   text-transform: uppercase;
+  overflow-wrap: break-word;
 }
 .color-copied {
   position: absolute;
