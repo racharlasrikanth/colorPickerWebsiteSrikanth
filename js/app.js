@@ -8,6 +8,7 @@ import { getElement, copyText, hideText, displayColors } from "./utils.js";
 
 // Elements
 let scrollHeight = 0;
+let firstTimeDownArrow = true;
 const redContainer = getElement(".red-container");
 const blueContainer = getElement(".blue-container");
 const greenContainer = getElement(".green-container");
@@ -83,9 +84,14 @@ window.addEventListener("scroll", function (e) {
     navContainer.classList.remove("nav-container-change");
     getElement(".nav-logo").style.color = "white";
   }
-  scrollHeight <= 350
+  scrollHeight <= 350 && firstTimeDownArrow
     ? (getElement(".bottom-arrow-container").style.display = "block")
     : (getElement(".bottom-arrow-container").style.display = "none");
+});
+
+// down arrow disappear once we click on it. again it will come once we reload
+getElement(".bottom-arrow-container").addEventListener("click", function () {
+  firstTimeDownArrow = false;
 });
 
 // on click bars icon nav links showing

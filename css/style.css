@@ -175,6 +175,26 @@ p {
 
 /*
 =============== 
+Scroll styles
+===============
+*/
+
+body::-webkit-scrollbar {
+  width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset var(--dark-shadow);
+  background: var(--clr-grey-9);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--clr-primary-5);
+  border-radius: var(--radius);
+}
+
+/*
+=============== 
 arrow styles
 ===============
 */
@@ -379,6 +399,7 @@ red color center
   transition: var(--transition);
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 .color-container:hover {
   transform: scale(1.02);
@@ -401,11 +422,14 @@ red color center
   /* border-radius: var(--radius); */
   /* color: var(--clr-primary-5); */
   cursor: text;
+  text-transform: uppercase;
 }
 .color-copied {
   position: absolute;
-  color: var(--clr-primary-5);
-  background: var(--clr-grey-10);
+  /* color: var(--clr-primary-5);
+  background: var(--clr-grey-10); */
+  background: var(--clr-primary-4);
+  color: var(--clr-white);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0) rotateZ(360deg);
@@ -416,11 +440,14 @@ red color center
   text-transform: capitalize;
   font-weight: bold;
   transition: var(--transition);
-  border: 3px solid var(--clr-primary-8);
+  /* border: 3px solid var(--clr-primary-8); */
   user-select: none;
+  box-shadow: var(--dark-shadow);
+  opacity: 0;
 }
 .color-copied-show {
   transform: translate(-50%, -50%) scale(1.2) rotateZ(0deg);
+  opacity: 1;
 }
 @media screen and (min-width: 250px) {
   .main-color-center {
@@ -446,14 +473,14 @@ red color center
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 550px) {
   .color-container {
     flex: 1 1 calc(33.333% - 1rem);
     align-self: center;
     margin: 1rem 0.5rem;
   }
 }
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 700px) {
   .color-container {
     flex: 1 1 calc(25% - 1rem);
     align-self: center;

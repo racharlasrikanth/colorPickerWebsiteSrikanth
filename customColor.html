@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Colors</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script type="module" defer src="./js/customColors.js"></script>
+    <style>
+      .swatch {
+        width: 50px;
+        height: 25px;
+        margin: 1px;
+      }
+      input[type="color"] {
+        -webkit-appearance: none;
+        border: none;
+        width: 32px;
+        height: 32px;
+      }
+      input[type="color"]::-webkit-color-swatch-wrapper {
+        padding: 0;
+      }
+      input[type="color"]::-webkit-color-swatch {
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Custom colors</h1>
+    <input class="inputcolor" type="text" name="" id="" />
+    <button class="btnSub" type="submit">submit</button>
+
+    <br />
+    <br />
+    <input type="color" name="" id="" />
+    <div class="" id="op"></div>
+  </body>
+</html>
