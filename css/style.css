@@ -566,3 +566,54 @@ purple color center
 .section-purple {
   background: var(--clr-white);
 }
+
+/*
+=============== 
+Footer Styles
+===============
+*/
+.fotter-bottom {
+  background: var(--clr-grey-1);
+}
+.footer-nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.footer-nav-links li a {
+  display: block;
+  margin: 0rem 1rem 1rem 0rem;
+  letter-spacing: var(--spacing);
+  color: var(--clr-white);
+  transition: var(--transition);
+}
+.footer-nav-links li a:hover {
+  color: var(--clr-primary-7);
+}
+.footer-social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto;
+}
+.icon-container {
+  margin-right: 2rem;
+  transition: var(--transition);
+}
+.icon-container:hover {
+  transform: translateY(-5px);
+}
+.icon-container img {
+  width: 30px;
+  cursor: pointer;
+}
+.icon-container .youtube-icon {
+  width: 40px;
+}
+.footer-copy-right {
+  color: var(--clr-white);
+  text-align: center;
+  margin-top: 2rem;
+  letter-spacing: var(--spacing);
+}
